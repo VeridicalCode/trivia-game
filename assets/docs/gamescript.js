@@ -35,6 +35,15 @@ let questionArray = [q0, q1, q2];
     // show question div
     // begin timer
 
+// function: not exactly fisher-yates but it's only four elements so
+function shuffle(){
+    let answerArray = [ '#index0', '#index1', '#index2', '#index3'];
+    let j = Math.floor(Math.random() * 4); // grab a box at random
+    $(answerArray[j]).appendTo('#hiddenDivForShuffle1'); // stick it at the beginning
+    j = Math.floor(Math.random() * 4) // grab another box at random
+    $(answerArray[j]).prependTo('#hiddenDivForShuffle2') // stick it to the beginning
+}
+
 // function: populate container
 function populateQuestionBox(){
     // grab correct question object & save it as a var
@@ -42,14 +51,15 @@ function populateQuestionBox(){
     $("#questionTextDiv").text(currentQuestion.question); // pull question text from object to html
     
     for (let i=0; i < 3; i++){ // loop through wrong answer array
-        let divIndex = '.index'+i; // iterate variable to create correct class tag
+        let divIndex = '#index'+i; // iterate variable to create correct id tag
         let incorrectText = currentQuestion.incorrect[i]; // store current array entry
         $(divIndex).text(incorrectText); // print current array entry to current div class
     }
     
     $('.rightAnswer').text(currentQuestion.correct);  // pull correct answer text from object to html
     $('#questionIndexDiv').text(questionIndex+1); // change number in header
-    // call shuffle function
+    questionIndex++ // set to next question for next time
+    shuffle();    // call shuffle function
     // call startTimer
 }
 populateQuestionBox();
