@@ -74,11 +74,13 @@ function populateQuestionBox(){
     
     $('.rightAnswer').text(currentQuestion.correct);  // pull correct answer text from object to html
     $('#questionIndexDiv').text(questionIndex+1); // change number in header
+    $('#alertIndexDiv').text(questionIndex+1); // change number in alert header while we're at it
+    $('#timerDiv').text(20); // reset the timer display before actually displaying it
     questionIndex++ // set to next question for next time
     shuffle();    // call shuffle function
     $('#questionDiv').show(); // unhide the div
     $('#timerDiv').show();
-    // call startTimer
+    // start the timer
     beginCountdown();
 }
 

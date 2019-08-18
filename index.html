@@ -18,19 +18,23 @@
   <div class="jumbotron">
     <h1>Play Star Trek Trivia!</h1>
   </div>
-
+  <!-- starter button. hides itself when game starts -->
   <div class="row">
     <div class="container text-center">
       <button class="btn btn-alert" id="startGame">Click here to start!</button>
     </div>
   </div>
+  <!-- question div. contains the current question, hidden once the player
+  selects an answer or times out. content is dynamic, pulled from stored objects -->
   <div class="container col-md-6 justify-content-md-center" id="questionDiv">
     <div class="card">
       <div class="card-header">
+        <!-- X changes dynamically to indicate which question we're on -->
         Question #<span id="questionIndexDiv">X</span>
       </div>
       <div class="card-body">
         <p id="questionTextDiv">The text of the question, the question for Kuzco</p>
+         <!--hiddenDivs have no footprint on the screen, and exist only as anchors for the shuffle function-->
         <div id="hiddenDivForShuffle1"></div>
         <p class="wrongAnswer" id="index0">Lorem</p>
         <p class="wrongAnswer" id="index1">Ipsum</p>
@@ -40,21 +44,23 @@
       </div>
     </div>
   </div>
+  <!-- alert div. this is displayed between questions, with the content dynamically adjusted to congratulate the player or explain what they did wrong. -->
   <div class="container col-md-6 justify-content-md-center" id="alertDiv">
     <div class="card">
       <div class="card-header">
-        Question #<span id="questionIndexDiv">X</span>
+        Question #<span id="alertIndexDiv">X</span>
       </div>
       <div class="card-body">
         <p id="alertTextDiv">Whoops, you suck!</p>
       </div>
     </div>
   </div>
+  <!-- a small timer that shows the player how much time they have to answer the question. -->
   <div class="container text-center">
-    <div class="btn" id="timerDiv">X</div>
+    <div class="btn" id="timerDiv">20</div>
   </div>
 
-
+  <!-- the DOM manipulation lives here -->
   <script src="./assets/docs/gamescript.js"></script>
 
 </body>
