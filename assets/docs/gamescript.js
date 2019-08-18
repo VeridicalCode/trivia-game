@@ -92,9 +92,8 @@ $(document).on('click', '.rightAnswer', function(){
 // function: onclick wrong answer
 $(".wrongAnswer").on("click", function() {
     // stop timer
-    // store right answer as var
-    // hide question div
-    // show alert div
-    // losses--
-    // divtext to "Sorry, the correct answer was " + answer
+    let rightAnswer = $('.rightAnswer').text();  // store right answer as var
+    $('#alertTextDiv').text('Sorry, the correct answer was "' + rightAnswer + '."');
+    losses--
+    showAlert();
 })
