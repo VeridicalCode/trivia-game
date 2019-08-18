@@ -3,6 +3,8 @@
 let questionIndex = 0; // start with the first question & iterate
 let losses = 0; // number of questions missed
 let wins = 0; // number of questions beaten
+let countdown = 20; // twenty seconds per question
+let clockIsTicking; // stores our interval function
 
 let q0 = {
     question: 'Which of the following people has never been in a Star Trek episode?',
@@ -30,16 +32,22 @@ let q2 = {
 
 let questionArray = [q0, q1, q2];
 
-// function startTimer
+// function to pull next question
 function nextQuestion(){
+    if (questionIndex >= questionArray.length){ // if we're out of questions
+        $('#alertTextDiv').text("The game is over! You got " + wins + " questions right!");
+        $('#startGame').show();
+        return; // bail out
+    }
+    // otherwise:
     $('#alertDiv').hide();  // hide alert div
     populateQuestionBox();  // call function to set up new question
-    // begin timer
 }
 
 // show the alert div for five seconds, then go back to question div
 function showAlert(){
     $('#questionDiv').hide();  // hide question div
+    $('#timerDiv').hide();
     $('#alertDiv').show();  // show alert div
     setTimeout(nextQuestion, 5000); // in five seconds, call nextQuestion
 }
@@ -69,31 +77,54 @@ function populateQuestionBox(){
     questionIndex++ // set to next question for next time
     shuffle();    // call shuffle function
     $('#questionDiv').show(); // unhide the div
+    $('#timerDiv').show();
     // call startTimer
+    beginCountdown();
 }
-populateQuestionBox();
 
-// function: timer expires
-    // store right answer as var
-    // hide question div
-    // show alert div
-    // divtext to "Time's up! The answer was " + answer
-    // iterate losses
+// shave one second off timer, alert to failure if the time hits 0
+function questionTimer() {
+    countdown--; // iterate down
+    $("#timerDiv").html(countdown); // change text of timer accordingly
+    if (countdown === 0) {
+      stop();  // bail out of the interval
+      losses-- // iterate losses
+      let rightAnswer = $('.rightAnswer').text();  // store right answer as var
+      $('#alertTextDiv').text('Time\'s up! The correct answer was "' + rightAnswer + '."');
+        // change alert text
+      showAlert(); // call the next card
+    }
+  }
+// actual interval function to start timer ticking
+function beginCountdown() {
+    clearInterval(clockIsTicking); // safety check
+    countdown = 20; // reset timer to 20 seconds with each new call
+    clockIsTicking = setInterval(questionTimer, 1000); // proc questionTimer every second
+}
 
 // function: onclick correct answer
-$(document).on('click', '.rightAnswer', function(){
-    // stop timer
-
-    wins++
+$('.rightAnswer').on('click', function(){
+    clearInterval(clockIsTicking); // stop timer
+    wins++ // iterate wins
     $('#alertTextDiv').text("That's right! Your score is now " + wins +"!")
-    showAlert();
+    showAlert(); // swap cards
 })
 
 // function: onclick wrong answer
 $(".wrongAnswer").on("click", function() {
-    // stop timer
+    clearInterval(clockIsTicking); // stop timer
     let rightAnswer = $('.rightAnswer').text();  // store right answer as var
     $('#alertTextDiv').text('Sorry, the correct answer was "' + rightAnswer + '."');
-    losses--
-    showAlert();
+    losses-- // iterate losses
+    showAlert(); // swap cards
+})
+
+// on button click. clear everything just to be safe, then proc question box
+$('#startGame').on('click', function(){
+    $('#startGame').hide();
+    $('#alertDiv').hide();
+    wins = 0;
+    losses = 0;
+    questionIndex = 0;
+    populateQuestionBox();
 })

@@ -2,10 +2,11 @@ h1{
   text-align: center;
 }
 
-#questionDiv{
+#questionDiv, #alertDiv, #timerDiv{
   display: none;
 }
 
-#alertDiv{
-  display: none;
+#timerDiv{
+  font-size: 2em;
+  margin: 1em;
 }
