@@ -2,7 +2,10 @@ h1{
   text-align: center;
 }
 
-.buttonContainer{
-  text-align: center;
-  margin: 25vw;
+#questionDiv{
+  display: none;
+}
+
+#alertDiv{
+  display: none;
 }

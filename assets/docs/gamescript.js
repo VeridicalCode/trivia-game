@@ -31,9 +31,18 @@ let q2 = {
 let questionArray = [q0, q1, q2];
 
 // function startTimer
-    // hide alert div
-    // show question div
+function nextQuestion(){
+    $('#alertDiv').hide();  // hide alert div
+    populateQuestionBox();  // call function to set up new question
     // begin timer
+}
+
+// show the alert div for five seconds, then go back to question div
+function showAlert(){
+    $('#questionDiv').hide();  // hide question div
+    $('#alertDiv').show();  // show alert div
+    setTimeout(nextQuestion, 5000); // in five seconds, call nextQuestion
+}
 
 // function: not exactly fisher-yates but it's only four elements so
 function shuffle(){
@@ -41,13 +50,12 @@ function shuffle(){
     let j = Math.floor(Math.random() * 4); // grab a box at random
     $(answerArray[j]).appendTo('#hiddenDivForShuffle1'); // stick it at the beginning
     j = Math.floor(Math.random() * 4) // grab another box at random
-    $(answerArray[j]).prependTo('#hiddenDivForShuffle2') // stick it to the beginning
+    $(answerArray[j]).prependTo('#hiddenDivForShuffle2') // stick it to the end
 }
 
 // function: populate container
 function populateQuestionBox(){
-    // grab correct question object & save it as a var
-    let currentQuestion = questionArray[questionIndex];
+    let currentQuestion = questionArray[questionIndex]; // grab correct question object & save it as a var
     $("#questionTextDiv").text(currentQuestion.question); // pull question text from object to html
     
     for (let i=0; i < 3; i++){ // loop through wrong answer array
@@ -60,6 +68,7 @@ function populateQuestionBox(){
     $('#questionIndexDiv').text(questionIndex+1); // change number in header
     questionIndex++ // set to next question for next time
     shuffle();    // call shuffle function
+    $('#questionDiv').show(); // unhide the div
     // call startTimer
 }
 populateQuestionBox();
@@ -72,12 +81,12 @@ populateQuestionBox();
     // iterate losses
 
 // function: onclick correct answer
-$(".rightAnswer").on("click", function() {
+$(document).on('click', '.rightAnswer', function(){
     // stop timer
-    // hide question div
-    // show alert div
-    // wins++
-    // divtext to "That's right! Your score is " + wins
+
+    wins++
+    $('#alertTextDiv').text("That's right! Your score is now " + wins +"!")
+    showAlert();
 })
 
 // function: onclick wrong answer
