@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Trivia Game</title>
@@ -9,16 +10,50 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
 </head>
-  <body>
 
-    <div id="empty-div"></div>
+<body>
 
-    <!-- two divs -->
-    <!-- question div: header with number, question, clickable responses -->
-    <!-- reaction div: just a card with "you fail, the answer was:" or "good for you" -->
-    <!-- functions hide one and display the other as relevant -->
+  <div class="jumbotron" style="text-align: center">
+    <h1>Play Star Trek Trivia!</h1>
+  </div>
 
-    <script  src="./assets/docs/gamescript.js"></script>
+  <div class="row">
+    <div class="container buttonContainer">
+      <button class="btn btn-alert" id="startGame">Click here to start!</button>
+  </div>
+</div>
+  <div class="container col-md-6 justify-content-md-center" id="questionDiv">
+    <div class="card">
+      <div class="card-header">
+        Question #<span id="questionIndexDiv">X</span>
+      </div>
+      <div class="card-body">
+        <p id="questionTextDiv">The text of the question, the question for Kuzco</p>
+        <p class="wrongAnswer answerText" index=1>Lorem</p>
+        <p class="wrongAnswer answerText" index=2>Ipsum</p>
+        <p class="wrongAnswer answerText" index=3>Renata</p>
+        <p class="rightAnswer answerText" index=0>Fritatta</p>
+      </div>
+    </div>
+  </div>
+  <div class="container col-md-6 justify-content-md-center" id="alertDiv">
+    <div class="card">
+      <div class="card-header">
+        Question #<span id="questionIndexDiv">X</span>
+      </div>
+      <div class="card-body">
+        <p id="alertTextDiv">Whoops, you suck!</p>
+      </div>
+    </div>
+  </div>
 
-  </body>
+  <!-- two divs -->
+  <!-- question div: header with number, question, clickable responses -->
+  <!-- reaction div: just a card with "you fail, the answer was:" or "good for you" -->
+  <!-- functions hide one and display the other as relevant -->
+
+  <script src="./assets/docs/gamescript.js"></script>
+
+</body>
+
 </html>
