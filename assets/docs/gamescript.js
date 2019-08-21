@@ -30,12 +30,36 @@ let q2 = {
         '1840s Johannesburg']
 }
 
+let q3 = {
+    question: 'Breaking the warp barrier has been known to turn humans into:',
+    correct: 'giant salamanders',
+    incorrect: ['invisible aliens',
+        'crystalline life forms',
+        'Q']
+}
+
+let q3 = {
+    question: 'The Vulcan salute is derived from:',
+    correct: 'A traditional Jewish gesture',
+    incorrect: ['A hippie symbol',
+        'A gang sign',
+        'A drawing by Gene Roddenberry\'s son']
+}
+
+let q4 = {
+    question: 'This actor recorded sound files so that future Trek shows could always use their voice:',
+    correct: 'Majel Barrett',
+    incorrect: ['William Shatner',
+        'Brent Spiner',
+        'Linda Park']
+}
+
 let questionArray = [q0, q1, q2];
 
 // function to pull next question
 function nextQuestion(){
     if (questionIndex >= questionArray.length){ // if we're out of questions
-        $('#alertTextDiv').text("The game is over! You got " + wins + " questions right!");
+        $('#alertTextDiv').text("The game is over! Out of " + (questionArray.length+1) + " questions, you got " + wins + " correct, and " + losses + "wrong.");
         $('#startGame').show();
         return; // bail out
     }
