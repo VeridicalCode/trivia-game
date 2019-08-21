@@ -38,7 +38,7 @@ let q3 = {
         'Q']
 }
 
-let q3 = {
+let q4 = {
     question: 'The Vulcan salute is derived from:',
     correct: 'A traditional Jewish gesture',
     incorrect: ['A hippie symbol',
@@ -46,7 +46,7 @@ let q3 = {
         'A drawing by Gene Roddenberry\'s son']
 }
 
-let q4 = {
+let q5 = {
     question: 'This actor recorded sound files so that future Trek shows could always use their voice:',
     correct: 'Majel Barrett',
     incorrect: ['William Shatner',
@@ -54,7 +54,7 @@ let q4 = {
         'Linda Park']
 }
 
-let questionArray = [q0, q1, q2];
+let questionArray = [q0, q1, q2, q3, q4, q5];
 
 // function to pull next question
 function nextQuestion(){
