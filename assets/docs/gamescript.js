@@ -48,7 +48,21 @@ let questionArray = [
     incorrect: ['William Shatner',
       'Brent Spiner',
       'Linda Park']
-  }
+  },
+  {
+    question: 'This recurring Enterprise character was intended to become a series regular in the fifth season, had the show been renewed:',
+    correct: 'Thy\'lek Shran',
+    incorrect: ['Corporal McKenzie',
+      'Crewman Daniels',
+      'Chef']
+  },
+  {
+    question: 'The name "Soji" translates to "Foundation," a reference to the work of which famous science fiction writer?',
+    correct: 'Isaac Asimov',
+    incorrect: ['Octavia Bulter',
+      'Arthur C Clarke',
+      'Samuel Delaney']
+  },
 ]
 
 // function to pull next question
