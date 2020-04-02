@@ -6,55 +6,50 @@ let wins = 0; // number of questions beaten
 let countdown = 20; // twenty seconds per question
 let clockIsTicking; // stores our interval function
 
-let q0 = {
+let questionArray = [
+  {
     question: 'Which of the following people has never been in a Star Trek episode?',
     correct: 'Winona Ryder',
-    incorrect: [ 'King Abdullah II of Jordan',
-        'Dwayne "The Rock" Johnson',
-        'Stephen Hawking' ]
-}
-
-let q1 = {
+    incorrect: ['King Abdullah II of Jordan',
+      'Dwayne "The Rock" Johnson',
+      'Stephen Hawking']
+  },
+  {
     question: 'What song did Zefram Cochrane listen to while conducting his warp drive test flight?',
     correct: 'Steppenwolf’s "Magic Carpet Ride"',
-    incorrect: [ 'Elton John’s "Rocket Man"',
-        'David Bowie’s "Space Oddity"',
-        'The Beastie Boys’s "Intergalactic"']
-}
-
-let q2 = {
+    incorrect: ['Elton John’s "Rocket Man"',
+      'David Bowie’s "Space Oddity"',
+      'The Beastie Boys’s "Intergalactic"']
+  },
+  {
     question: 'In the DS9 episode "Far Beyond the Stars," Ben Sisko experiences another life in:',
     correct: '1950s New York',
     incorrect: ['2020s San Francisco',
-        '1970s Detroit',
-        '1840s Johannesburg']
-}
-
-let q3 = {
+      '1970s Detroit',
+      '1840s Johannesburg']
+  },
+  {
     question: 'Breaking the warp barrier has been known to turn humans into:',
     correct: 'giant salamanders',
     incorrect: ['invisible aliens',
-        'crystalline life forms',
-        'Q']
-}
-
-let q4 = {
+      'crystalline life forms',
+      'Q']
+  },
+  {
     question: 'The Vulcan salute is derived from:',
     correct: 'A traditional Jewish gesture',
     incorrect: ['A hippie symbol',
-        'A gang sign',
-        'A drawing by Gene Roddenberry\'s son']
-}
-
-let q5 = {
+      'A gang sign',
+      'A drawing by Gene Roddenberry\'s son']
+  },
+  {
     question: 'This actor recorded sound files so that future Trek shows could always use their voice:',
     correct: 'Majel Barrett',
     incorrect: ['William Shatner',
-        'Brent Spiner',
-        'Linda Park']
-}
-
-let questionArray = [q0, q1, q2, q3, q4, q5];
+      'Brent Spiner',
+      'Linda Park']
+  }
+]
 
 // function to pull next question
 function nextQuestion(){
