@@ -1,5 +1,7 @@
 # Trek Trivia
 
+![Running the app](/assets/images/preview.jpg)
+
 ## What Is This Thing?
 Exactly what it says on the box: an online Star Trek-themed trivia game.
 
